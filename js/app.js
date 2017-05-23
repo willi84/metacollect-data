@@ -78,7 +78,7 @@ d3DemoApp.controller('AppCtrl', function AppCtrl ($scope, $http) {
       method: 'GET',
       //url:'https://api.github.com/repos/' +
       //url: './data/a.json'
-      url: 'http://django.dsini20.schedar.uberspace.de/api/search/project?format=json&title*istartswith=' + $scope.firstChar
+      url: '//django.dsini20.schedar.uberspace.de/api/search/project?format=json&title*istartswith=' + $scope.firstChar
         
     })
     .then(function successCallback(response) {
