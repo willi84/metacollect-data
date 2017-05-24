@@ -84,7 +84,6 @@ d3DemoApp.controller('AppCtrl', function AppCtrl ($scope, $http) {
     .then(function successCallback(response) {
      // attach this data to the scope
       $scope.data = response.data;
-      console.log($scope.data)
 
       // clear the error messages
       $scope.error = '';
@@ -166,13 +165,14 @@ let simulation = d3.forceSimulation()
 	.force('x', d3.forceX(centerX ).strength(strength))
 	.force('y', d3.forceY(centerY ).strength(strength));
 
+let sizes = [10,20,30,40,50,60,70,80,90,100];
+
 // reduce number of circles on mobile screen due to slow computation
 if ('matchMedia' in window && window.matchMedia('(max-device-width: 767px)').matches) {
-	data = data.filter(el => {
-		return el.value >= 50;
+	newVal = newVal.filter(el => {
+		return sizes[Math.floor((Math.random() * 10) + 1)] >= 50;
 	});
 }
-let sizes = [10,20,30,40,50,60,70,80,90,100];
 let root = d3.hierarchy({ children: newVal })
 	.sum(d => sizes[Math.floor((Math.random() * 10))]); //d.value);
 
@@ -181,7 +181,6 @@ let root = d3.hierarchy({ children: newVal })
 let nodes = pack(root).leaves().map(node => {
 	const data = node.data;
   const cat = (data.categories &&  data.categories.length > 0) ? data.categories[0].name : 'foobar';
-  console.log(Math.floor((Math.random() * 10) + 1))
 	return {
 		x: centerX + (node.x - centerX) * 3, // magnify start position to have transition to center movement
 		y: centerY + (node.y - centerY) * 3,
