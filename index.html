@@ -1,23 +1,47 @@
 <!DOCTYPE html>
 <html ng-app="d3DemoApp">
-  <head>
-    <meta charset="utf-8">
-    <title>AngularJS + D3.js</title>
-    <script src="./js/d3.v4.7.4.js"></script>
-    <script src="./js/d3-legend.min.js"></script>
-     <script src="./js/angular.min.js"></script>
-    <script src="./js/app.js"></script>
-    <link rel="stylesheet" href="./css/style.css" >
 
-  </head>
-  <body ng-controller="AppCtrl">
-    <h2>Metacollect Datenbank</h2>
+<head>
+  <meta charset="utf-8">
+  <title>AngularJS + D3.js</title>
+  <script src="./js/angular.min.js"></script>
+  <script src="./bower_components/tabletop/src/tabletop.js"></script>
+  <script src="./bower_components/angular-tabletop/TabletopProvider.js"></script>
+  <script src="./js/d3.v4.7.4.js"></script>
+  <script src="./js/d3-legend.min.js"></script>
+
+
+  <script src="./js/app.js"></script>
+  <link rel="stylesheet" href="./css/style.css">
+
+
+
+
+</head>
+
+
+<body ng-controller="AppCtrl">
+  <h2>Metacollect Datenbank</h2>
+
   <form ng-submit="getCommitData()">
-    erster Buchstabe: <input ng-model="firstChar"></input>
+    <label>
+    <input type="radio" ng-model="layer.name" value="places">
+    Places
+  </label><br/>
+    <label>
+    <input type="radio" ng-model="layer.name" value="categories">
+    Categories
+  </label><br/>
+    <label>
+    <input type="radio" ng-model="layer.name" value="category">
+    Category
+  </label><br/>
+    <tt>color = {{layer.name | json}}</tt><br/> erster Buchstabe: <input ng-model="firstChar"></input>
     <input type="submit" value="Get Data">
   </form>
-      
-  <gh-visualization val="data" grouped="grouped"></gh-visualization>
+
+  <gh-visualization val="data" grouped="grouped" layer="layer.name"></gh-visualization>
   {{error}}
 </body>
+
 </html>
