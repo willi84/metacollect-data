@@ -86,11 +86,9 @@ var d3DemoApp = angular.module('d3DemoApp', ['times.tabletop'])
 
 		$scope.getCommitData = function () {
 
-			/*Tabletop.then(function success(ttdata){
+			Tabletop.then(function success(ttdata){
 				//console.log(ttdata);
 				localStorage.setItem('data', JSON.stringify(ttdata[0]));
-				console.log(localStorage.getItem('data'));
-				console.log('get');
 					$scope.data = ttdata[0] || localStorage.getItem('data');
 					$scope.categories = [];
 			
@@ -99,11 +97,11 @@ var d3DemoApp = angular.module('d3DemoApp', ['times.tabletop'])
 				};
 			
 					
-			});*/
-			$scope.data = JSON.parse(localStorage.getItem('data'));
+			});
+			/*$scope.data = JSON.parse(localStorage.getItem('data'));
 			$scope.layer = {
 				name: 'places'
-			};
+			};*/
 			/*$http({
 				method: 'GET',
 				//url:'https://api.github.com/repos/' +
